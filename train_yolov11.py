@@ -1,16 +1,14 @@
-from sympy.physics.units import momentum
-from torch import nn
-from ultralytics.utils.callbacks.base import optimizer_step
-
+import warnings
+warnings.simplefilter("ignore", DeprecationWarning)  # 所以弃用警告均不打印
 from ultralytics.models import NAS, RTDETR, SAM, YOLO, FastSAM, YOLOWorld
 
 if __name__ == '__main__':
-    model = (YOLO(r"ultralytics/cfg/models/11/yolo11-imp37.yaml")
-             .load(r'D:\tcy_works\YOLOv11\ultralytics-main\runs\detect\train50\weights\best.pt'))
+    model = (YOLO(r"E:\tcy_data\nn\YOLOv11\ultralytics-main\ultralytics\cfg\models\v8\yolov8.yaml")
+             .load(r'E:\tcy_data\nn\YOLOv11\ultralytics-main\load_models\yolov8n.pt'))
              # .load(r'D:\tcy_works\Full_stack\Django\car_van\yolo11s.pt'))
     # model.model.apply(init_weights)
     results = model.train(
-        data=r'D:\tcy_works\Full_stack\Django\car_van\datasets2\data.yaml',
+        data=r"E:\tcy_data\datasets2\data.yaml",
         epochs=60,
         imgsz=640,
         batch=4,
